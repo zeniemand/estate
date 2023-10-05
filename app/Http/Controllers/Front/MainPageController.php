@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class MainPageController extends Controller
 {
-    const PAGE_NAME = 'Main Page';
+    const PAGE_NAME = 'Your Estate';
     protected string $pageName;
 
     public function __construct()

@@ -2,11 +2,10 @@
     <div class="container">
         <div class="heading_container heading_center">
             <h2>
-                LOOKING FOR EXPERTS?
+                {{__('Наші ріелтори')}}
             </h2>
             <p>
-                Lorem ipsum dolor sit amet, non odio tincidunt ut ante, lorem a euismod suspendisse vel, sed quam nulla mauris
-                iaculis. Erat eget vitae malesuada, tortor tincidunt porta lorem lectus.
+                {{ __('Наші ріелтори працюють для вас') }}
             </p>
         </div>
         <div class="row">

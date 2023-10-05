@@ -26,7 +26,7 @@
                         <a class="nav-link" href="freelancer.html">Freelancers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('admin') }}">
                             <i class="fa fa-user" aria-hidden="true"></i>
                             <span>
                     Login
@@ -34,7 +34,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('admin') }}">
                             <i class="fa fa-user" aria-hidden="true"></i>
                             <span>
                     Sign Up
