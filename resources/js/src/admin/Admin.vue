@@ -1,9 +1,7 @@
 <script>
 
-import DefaultLayout from "./components/DefaultLayout.vue";
 export default {
     name: "Admin",
-    components: {DefaultLayout},
     data(){
         return {
             name: 'Victor'
@@ -13,9 +11,7 @@ export default {
 </script>
 
 <template>
-
     <router-view />
-
 </template>
 
 <style scoped>

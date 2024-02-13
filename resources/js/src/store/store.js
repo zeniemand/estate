@@ -7,8 +7,9 @@ const store = new Vuex.Store({
             user: {
                 data: {
                     name: 'John',
-                    token: null
-                }
+                },
+                //token: null
+                token: '123'
             }
         }
     },

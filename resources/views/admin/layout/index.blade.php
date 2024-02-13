@@ -6,12 +6,11 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $pagename }}</title>
-    @vite('resources/js/app.js')
 </head>
 <body>
 
+<div id="admin" ></div>
 
-<div id="admin"></div>
-
+@vite('resources/js/app.js')
 </body>
 </html>
