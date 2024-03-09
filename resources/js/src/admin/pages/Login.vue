@@ -1,10 +1,21 @@
 <script>
+import store from "@/store/store";
 export default {
     name: "Login",
     data(){
         return {
             pageName: 'Login'
         }
+    },
+    methods: {
+        showState(){
+            console.log('current user data: ' + JSON.stringify(store.state.user))
+        }
+    },
+    mounted() {
+        console.log('Componet ' + this.pageName + ' is mounted!!!');
+        this.showState();
+
     }
 }
 </script>
