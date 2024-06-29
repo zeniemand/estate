@@ -48,13 +48,13 @@ class AuthController extends Controller
             'password' => 'required|string'
         ]);
 
+
         if(!Auth::attempt($credentials)){
 
             return response([
-                'error' => 'Provided email or password does not match our records.'
+                'message' => 'Provided email or password does not match our records.'
             ], 422);
         };
-
         $user = Auth::user();
         $token = $user->createToken('main')->plainTextToken;
 
