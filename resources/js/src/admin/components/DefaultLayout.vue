@@ -132,7 +132,7 @@ const navigation = [
 ]
 
 function logout() {
-    store.commit('logout');
+    store.commit('user/logout');
     router.push({
         name: 'Login'
     });
