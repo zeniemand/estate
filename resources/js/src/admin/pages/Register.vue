@@ -1,8 +1,34 @@
 <script setup>
 import store from "@/store/store";
 import {useRouter} from "vue-router";
+import {ref} from "vue";
 
 const router = useRouter();
+
+let errorNameMsg = ref('');
+let errorMailMsg = ref('');
+let errorPassMsg = ref('');
+
+function assignErrorNameMsg(err){
+    if (err && err !== 'undefined'){
+        errorNameMsg.value = err[0];
+        console.log('name error message is: ' + errorNameMsg.value);
+    }
+
+}
+function assignErrorMailMsg(err){
+    if (err && err !== 'undefined'){
+        errorMailMsg.value = err[0];
+        console.log('email error message is: ' + errorMailMsg.value);
+    }
+}
+
+function assignErrorPassMsg(err){
+    if (err && err !== 'undefined'){
+        errorPassMsg.value = err[0];
+        console.log('password error message is: ' + errorPassMsg.value);
+    }
+}
 
 function register(ev){
     ev.preventDefault();
@@ -13,14 +39,31 @@ function register(ev){
                 });
             }
         )
+        .catch(err => {
+            if(err.response.data.errors && err.response.data.errors !== 'unefined'){
+                let errors = JSON.stringify(err.response.data.errors);
+                console.log('errors data: ' + errors );
+                errors = err.response.data.errors;
+                assignErrorNameMsg(errors.name);
+                assignErrorMailMsg(errors.email);
+                assignErrorPassMsg(errors.password)
+            }
+        })
 };
 
 //for test (then clear):
-const user = {
+/*const user = {
     name: 'mike',
     email: 'mike@mail.com',
     password: '!Umike12345678',
     password_confirmation: '!Umike12345678'
+}*/
+
+const user = {
+    name: '',
+    email: '',
+    password: '',
+    password_confirmation: ''
 }
 
 </script>
@@ -33,7 +76,8 @@ const user = {
                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                 alt="Your Company"
             />
-            <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Register for free</h2>
+            <h2 class="mt-10 text-center text-2xl font-bold leading-9
+            tracking-tight text-gray-900">Register for free</h2>
             <div class="mt-2 text-center text-sm text-gray-600">
                 <router-link
                     :to="{name: 'Login'}"
@@ -50,6 +94,18 @@ const user = {
                 @submit="register"
             >
                 <div>
+                    <div v-if="errorNameMsg"
+                         class="flex items-center justify-between py-3 px-5 text-white rounded bg-red-500">
+                        <span class="font-medium">WARNING!</span> {{ errorNameMsg }}
+                        <span @click="errorNameMsg= ''"
+                              class="w-8 h-8 flex items-center justify-center rounded-full transition-colors cursor-pointer hover:bg-[rgba(0,0,0,0.2)]">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                             stroke="currentColor" class="size-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+                        </svg>
+
+                    </span>
+                    </div>
                     <label
                         for="fullname"
                         class="block text-sm font-medium leading-6 text-gray-900"
@@ -68,6 +124,15 @@ const user = {
                     </div>
                 </div>
                 <div>
+                    <div v-if="errorMailMsg" class="flex items-center justify-between py-3 px-5 text-white rounded bg-red-500">
+                        <span class="font-medium">WARNING!</span> {{errorMailMsg}}
+                        <span @click="errorMailMsg= ''" class="w-8 h-8 flex items-center justify-center rounded-full transition-colors cursor-pointer hover:bg-[rgba(0,0,0,0.2)]">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+
+                    </span>
+                    </div>
                     <label
                         for="email"
                         class="block text-sm font-medium leading-6 text-gray-900"
@@ -88,14 +153,23 @@ const user = {
                 </div>
 
                 <div>
-                    <div class="flex items-center justify-between">
+                    <div v-if="errorPassMsg" class="flex items-center justify-between py-3 px-5 text-white rounded bg-red-500">
+                        <span class="font-medium">WARNING! </span> {{ errorPassMsg }}
+                        <span @click="errorPassMsg= ''"
+                              class="w-8 h-8 flex items-center justify-center rounded-full transition-colors cursor-pointer hover:bg-[rgba(0,0,0,0.2)]">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                             stroke="currentColor" class="size-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+                        </svg>
+
+                        </span>
+                    </div>
                         <label
                             for="password"
                             class="block text-sm font-medium leading-6 text-gray-900"
                         >
                             Password
                         </label>
-                    </div>
                     <div class="mt-2">
                         <input
                             id="password"
