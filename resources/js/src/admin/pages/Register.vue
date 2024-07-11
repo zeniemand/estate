@@ -77,7 +77,7 @@ const user = {
                 alt="Your Company"
             />
             <h2 class="mt-10 text-center text-2xl font-bold leading-9
-            tracking-tight text-gray-900">Register for free</h2>
+            tracking-tight text-gray-900">{{ $t("register.header") }}</h2>
             <div class="mt-2 text-center text-sm text-gray-600">
                 <router-link
                     :to="{name: 'Login'}"

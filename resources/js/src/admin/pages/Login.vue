@@ -58,6 +58,7 @@ export default {
     },
     mounted() {
         console.log('Component ' + this.pageName + ' is mounted!!!');
+        console.log('Current path url: ' + import.meta.url );
         this.showState();
 
     }
@@ -68,7 +69,7 @@ export default {
 
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
         <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company" />
-        <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account</h2>
+        <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">{{ $t("login.header") }}</h2>
         <div class="mt-2 text-center text-sm text-gray-600">
             <router-link
                 :to="{name: 'Register'}"

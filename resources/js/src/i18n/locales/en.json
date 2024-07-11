@@ -1,0 +1,13 @@
+{
+    "locale": {
+        "ua": "Ukrainian",
+        "en": "English"
+    },
+    "login": {
+        "header": "Sign in to your account"
+    },
+    "register": {
+        "header": "Register for free"
+    }
+
+}
